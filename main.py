@@ -14,3 +14,11 @@ def upload_files(ftp, local_folder):
         if file.endswith('.doc') or file.endswith('.docx') or file.endswith('.xls') or file.endswith('.xlsx'):
             with open(local_folder + '/' + file, 'rb') as f:
                 ftp.storbinary('STOR ' + file, f)
+                
+                ftp = ftpConnection.connect_ftp(FTP_HOST, FTP_USER, FTP_PASSWORD)
+
+upload_files(ftp, folder_path)
+
+ftp.dir() 
+
+ftp.quit()
